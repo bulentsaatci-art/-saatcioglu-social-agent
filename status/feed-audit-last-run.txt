@@ -1,0 +1,13 @@
+run_sha=821294c3f4fe0db094b7ab720b23e1f5c6c144ba
+exit_code=1
+timestamp_utc=2026-08-22T14:30:32Z
+--- output ---
+Traceback (most recent call last):
+  File "/home/runner/work/-saatcioglu-social-agent/-saatcioglu-social-agent/scripts/fetch_feed_snapshot.py", line 100, in <module>
+    main()
+  File "/home/runner/work/-saatcioglu-social-agent/-saatcioglu-social-agent/scripts/fetch_feed_snapshot.py", line 61, in main
+    data = graphql(api_key, f'''query FeedSnapshot {{
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/-saatcioglu-social-agent/-saatcioglu-social-agent/scripts/fetch_feed_snapshot.py", line 27, in graphql
+    raise RuntimeError(json.dumps(payload["errors"], ensure_ascii=False))
+RuntimeError: [{"message": "Cannot query field \"type\" on type \"PostMetadata\". Did you mean to use an inline fragment on \"CommonPostMetadata\", \"BlueskyPostMetadata\", \"FacebookPostMetadata\", \"GoogleBusinessPostMetadata\", or \"InstagramPostMetadata\"?", "locations": [{"line": 18, "column": 24}], "extensions": {"code": "GRAPHQL_VALIDATION_FAILED"}}]
