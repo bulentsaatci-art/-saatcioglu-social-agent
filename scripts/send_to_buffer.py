@@ -95,10 +95,16 @@ def get_target_channel(api_key: str):
     )
 
 
-def create_draft(api_key: str, channel_id: str, text: str, image_url: str | None = None):
+def create_draft(api_key: str, channel_id: str, text: str, image_url: str | None = None, instagram_type: str = "post"):
     assets_block = ""
     if image_url:
         assets_block = f'''\n        assets: [{{ image: {{ url: {gql_string(image_url)} }} }}]'''
+
+    metadata_block = ""
+    if TARGET_SERVICE == "instagram":
+        if instagram_type not in {"post", "story", "reel"}:
+            raise RuntimeError("instagram_type post, story veya reel olmali")
+        metadata_block = f'''\n        metadata: {{ instagram: {{ type: {instagram_type}, shouldShareToFeed: true }} }}'''
 
     mutation = f'''mutation CreateApprovedDraft {{
       createPost(input: {{
@@ -107,7 +113,7 @@ def create_draft(api_key: str, channel_id: str, text: str, image_url: str | None
         schedulingType: automatic
         mode: addToQueue
         saveToDraft: true
-        aiAssisted: true{assets_block}
+        aiAssisted: true{assets_block}{metadata_block}
       }}) {{
         ... on PostActionSuccess {{
           post {{ id text status dueAt }}
@@ -145,8 +151,10 @@ def main():
     if TARGET_SERVICE == "instagram" and not image_url:
         raise RuntimeError("Instagram taslagi icin image_url veya video asset gerekli")
 
+    instagram_type = str(item.get("instagram_type", "post")).strip().lower() or "post"
+
     channel = get_target_channel(api_key)
-    result = create_draft(api_key, channel["id"], text, image_url)
+    result = create_draft(api_key, channel["id"], text, image_url, instagram_type)
     print("Buffer result:", json.dumps(result, ensure_ascii=False, indent=2))
 
     if isinstance(result, dict) and result.get("message"):
