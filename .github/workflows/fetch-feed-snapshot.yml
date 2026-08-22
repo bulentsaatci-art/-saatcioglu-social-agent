@@ -19,19 +19,34 @@ jobs:
           fetch-depth: 0
 
       - name: Fetch Buffer/Instagram feed snapshot
+        id: fetch
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
-        run: python3 scripts/fetch_feed_snapshot.py
+        shell: bash
+        run: |
+          set +e
+          mkdir -p status
+          OUTPUT=$(python3 scripts/fetch_feed_snapshot.py 2>&1)
+          STATUS=$?
+          printf 'run_sha=%s\nexit_code=%s\ntimestamp_utc=%s\n--- output ---\n%s\n' "$GITHUB_SHA" "$STATUS" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$OUTPUT" > status/feed-audit-last-run.txt
+          echo "$OUTPUT"
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          exit 0
 
-      - name: Commit snapshot
+      - name: Commit audit result
         shell: bash
         run: |
           git config user.name "Saatcioglu Social Agent"
           git config user.email "actions@users.noreply.github.com"
-          git add status/feed-snapshot.json
+          git add status/feed-audit-last-run.txt
+          if [ -f status/feed-snapshot.json ]; then git add status/feed-snapshot.json; fi
           if git diff --cached --quiet; then
-            echo "No snapshot changes"
-            exit 0
+            echo "No audit changes"
+          else
+            git commit -m "Update Instagram feed audit result"
+            git push
           fi
-          git commit -m "Update Instagram feed snapshot"
-          git push
+
+      - name: Fail if audit failed
+        if: steps.fetch.outputs.status != '0'
+        run: exit 1
