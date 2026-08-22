@@ -95,7 +95,11 @@ def get_target_channel(api_key: str):
     )
 
 
-def create_draft(api_key: str, channel_id: str, text: str):
+def create_draft(api_key: str, channel_id: str, text: str, image_url: str | None = None):
+    assets_block = ""
+    if image_url:
+        assets_block = f'''\n        assets: [{{ image: {{ url: {gql_string(image_url)} }} }}]'''
+
     mutation = f'''mutation CreateApprovedDraft {{
       createPost(input: {{
         text: {gql_string(text)}
@@ -103,7 +107,7 @@ def create_draft(api_key: str, channel_id: str, text: str):
         schedulingType: automatic
         mode: addToQueue
         saveToDraft: true
-        aiAssisted: true
+        aiAssisted: true{assets_block}
       }}) {{
         ... on PostActionSuccess {{
           post {{ id text status dueAt }}
@@ -137,8 +141,12 @@ def main():
     if item.get("saveToDraft", True) is not True:
         raise RuntimeError("V1 guvenlik kilidi: saveToDraft true olmak zorunda")
 
+    image_url = str(item.get("image_url", "")).strip() or None
+    if TARGET_SERVICE == "instagram" and not image_url:
+        raise RuntimeError("Instagram taslagi icin image_url veya video asset gerekli")
+
     channel = get_target_channel(api_key)
-    result = create_draft(api_key, channel["id"], text)
+    result = create_draft(api_key, channel["id"], text, image_url)
     print("Buffer result:", json.dumps(result, ensure_ascii=False, indent=2))
 
     if isinstance(result, dict) and result.get("message"):
