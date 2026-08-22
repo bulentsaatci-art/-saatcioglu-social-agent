@@ -1,17 +1,15 @@
-run_sha=7d9410870feda5517ceb64710f930e855af43634
-approved_file=approved/2026-08-22-buffer-connection-test-6.json
-exit_code=1
-timestamp_utc=2026-08-22T14:15:02Z
+run_sha=47be72c1947ad5b0d91d4f6592727797e77d5a78
+approved_file=approved/2026-08-22-buffer-connection-test-7.json
+exit_code=0
+timestamp_utc=2026-08-22T14:16:04Z
 --- output ---
-ERROR: Buffer createPost error: Invalid post: Instagram posts require a type (post, story, or reel).
 BUFFER_API_KEY secret detected (value hidden)
 Target channel found: {"name": "saatcioglusupermarket", "displayName": "saatcioglusupermarket", "service": "instagram"}
 Buffer result: {
-  "message": "Invalid post: Instagram posts require a type (post, story, or reel)."
+  "post": {
+    "id": "6a89af2437caa42812cd9e70",
+    "text": "BAĞLANTI TESTİ #7 — Saatçıoğlu Supermarket sosyal medya ajanı. Bu yalnızca Buffer taslağıdır; yayınlanmamalıdır.",
+    "status": "draft",
+    "dueAt": null
+  }
 }
-Traceback (most recent call last):
-  File "/home/runner/work/-saatcioglu-social-agent/-saatcioglu-social-agent/scripts/send_to_buffer.py", line 158, in <module>
-    main()
-  File "/home/runner/work/-saatcioglu-social-agent/-saatcioglu-social-agent/scripts/send_to_buffer.py", line 153, in main
-    raise RuntimeError("Buffer createPost error: " + result["message"])
-RuntimeError: Buffer createPost error: Invalid post: Instagram posts require a type (post, story, or reel).
