@@ -75,7 +75,6 @@ def main():
             createdAt
             dueAt
             assets {{ id mimeType source thumbnail type }}
-            metadata {{ type }}
           }}
         }}
         pageInfo {{ hasNextPage endCursor }}
