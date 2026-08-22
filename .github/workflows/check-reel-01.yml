@@ -1,0 +1,30 @@
+name: Verify Reel 01 publish
+
+on:
+  push:
+    paths:
+      - 'publish-trigger/check-reel-01.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify Buffer publish
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+        run: python3 scripts/check_reel01_publish.py
+      - name: Commit verified result
+        run: |
+          git config user.name "Saatcioglu Social Agent"
+          git config user.email "actions@users.noreply.github.com"
+          git add status/published-reel-01.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Verify Reel 01 publish status"
+          git push
