@@ -4,13 +4,15 @@
     "post": {
       "id": "6a89ba7fc5db1e9cdce4dc54",
       "text": "Mordoğan’da yazlığa geldin… İlk market alışverişinde sende ne eksik çıkar? ☀️\n\nSüt ürünleri mi, temizlik mi, içecekler mi, patili dostların mamaları mı?\n\nSizde ilk ne biter? Yorumlara tek kelime bırak 👇\n\n#Mordoğan #Karaburun #SaatçıoğluSupermarket #YazlıkHayatı",
-      "status": "sending",
-      "sentAt": null,
-      "externalLink": null,
+      "status": "sent",
+      "sentAt": "2026-08-22T15:05:00.652Z",
+      "externalLink": "https://www.instagram.com/reel/DcWMTjcFN7e/",
       "sharedNow": true,
-      "shareMode": "shareNow"
+      "shareMode": "shareNow",
+      "error": null
     }
   },
   "media_url": "https://raw.githubusercontent.com/bulentsaatci-art/-saatcioglu-social-agent/main/public/reels/reel-01.mp4",
-  "timestamp": 1787411082.0744956
+  "timestamp": 1787411082.0744956,
+  "verified_after_publish": true
 }
