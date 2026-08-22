@@ -31,4 +31,14 @@ jobs:
       - name: Send approved item to Buffer as draft
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
-        run: python3 scripts/send_to_buffer.py "${{ steps.latest.outputs.file }}"
+        shell: bash
+        run: |
+          set +e
+          OUTPUT=$(python3 scripts/send_to_buffer.py "${{ steps.latest.outputs.file }}" 2>&1)
+          STATUS=$?
+          echo "$OUTPUT"
+          if [ $STATUS -ne 0 ]; then
+            ONE_LINE=$(printf '%s' "$OUTPUT" | tail -n 25 | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')
+            echo "::error title=Buffer diagnostic::$ONE_LINE"
+            exit $STATUS
+          fi
