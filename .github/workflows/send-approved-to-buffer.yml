@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   send-to-buffer:
@@ -35,6 +35,8 @@ jobs:
           cat "$FILE"
 
       - name: Send approved item to Buffer as draft
+        id: buffer
+        continue-on-error: true
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
         shell: bash
@@ -42,9 +44,38 @@ jobs:
           set +e
           OUTPUT=$(python3 scripts/send_to_buffer.py "${{ steps.latest.outputs.file }}" 2>&1)
           STATUS=$?
-          echo "$OUTPUT"
+          printf '%s\n' "$OUTPUT" | tee buffer-output.log
+          echo "exit_code=$STATUS" >> "$GITHUB_OUTPUT"
           if [ $STATUS -ne 0 ]; then
             ONE_LINE=$(printf '%s' "$OUTPUT" | tail -n 25 | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')
             echo "::error title=Buffer diagnostic::$ONE_LINE"
-            exit $STATUS
           fi
+          exit $STATUS
+
+      - name: Write run status to repository
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p status
+          {
+            echo "run_sha=$GITHUB_SHA"
+            echo "approved_file=${{ steps.latest.outputs.file }}"
+            echo "exit_code=${{ steps.buffer.outputs.exit_code }}"
+            echo "timestamp_utc=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo "--- output ---"
+            if [ -f buffer-output.log ]; then
+              tail -n 40 buffer-output.log
+            else
+              echo "No buffer output log"
+            fi
+          } > status/last-run.txt
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add status/last-run.txt
+          git commit -m "Update Buffer run status" || true
+          git push || true
+
+      - name: Mark job failed when Buffer step failed
+        if: steps.buffer.outputs.exit_code != '0'
+        run: exit 1
