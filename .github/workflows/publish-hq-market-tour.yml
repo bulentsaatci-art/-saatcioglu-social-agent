@@ -1,0 +1,44 @@
+name: Publish HQ market tour
+
+on:
+  push:
+    paths:
+      - 'publish-trigger/hq-market-tour.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: pip install pillow
+
+      - name: Validate full-resolution media and publish
+        id: publish
+        continue-on-error: true
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+        run: python3 scripts/publish_hq_market_tour.py
+
+      - name: Record status
+        if: always()
+        run: |
+          git config user.name 'Saatcioglu Social Agent'
+          git config user.email 'actions@users.noreply.github.com'
+          if [ -f status/published-hq-market-tour.json ]; then
+            git add status/published-hq-market-tour.json
+            git commit -m 'Record HQ market tour publish status' || true
+            git push || true
+          fi
+
+      - name: Fail if publish failed
+        if: steps.publish.outcome == 'failure'
+        run: exit 1
