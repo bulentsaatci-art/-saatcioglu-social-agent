@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#102319" flood-opacity=".13"/></filter>
+  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e7f2df"/><stop offset="1" stop-color="#c5dfbd"/></linearGradient>
+  <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f0e7cf"/><stop offset="1" stop-color="#dcc995"/></linearGradient>
+  <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dcece8"/><stop offset="1" stop-color="#b8d8d0"/></linearGradient>
+  <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9e5dd"/><stop offset="1" stop-color="#d0c8b9"/></linearGradient>
+  <style>
+    .sans{font-family:Arial,Helvetica,sans-serif}.dark{fill:#16291e}.green{fill:#367d42}.white{fill:#fff}.muted{fill:#5d6c63}
+  </style>
+</defs>
+<rect width="1080" height="1350" fill="#f7f7f1"/>
+<circle cx="990" cy="130" r="190" fill="#e7f2df" opacity=".7"/><circle cx="-35" cy="1160" r="170" fill="#edf2e7"/>
+
+<!-- brand -->
+<g transform="translate(750 58)">
+  <path d="M12 46h70l-9 48H28z" fill="none" stroke="#26342d" stroke-width="7" stroke-linejoin="round"/>
+  <circle cx="36" cy="108" r="8" fill="#26342d"/><circle cx="68" cy="108" r="8" fill="#26342d"/>
+  <path d="M17 37C18 7 52 -4 84 7C78 39 54 58 22 54C29 36 44 21 68 13C45 17 28 26 17 37z" fill="#5ac64d"/>
+  <text x="100" y="59" class="sans dark" font-size="43" font-weight="700">saatçıoğlu</text>
+  <text x="103" y="88" class="sans green" font-size="15" font-weight="700" letter-spacing="8">SÜPER MARKET</text>
+</g>
+
+<text x="70" y="86" class="sans green" font-size="27" font-weight="700" letter-spacing="1">MORDOĞAN • KARABURUN</text>
+<text x="70" y="160" class="sans dark" font-size="64" font-weight="800">Bugün markette</text>
+<text x="70" y="232" class="sans dark" font-size="64" font-weight="800">4 kısa durak</text>
+
+<!-- cards -->
+<g filter="url(#shadow)">
+ <rect x="70" y="310" width="458" height="355" rx="34" fill="url(#g1)"/>
+ <rect x="552" y="310" width="458" height="355" rx="34" fill="url(#g2)"/>
+ <rect x="70" y="690" width="458" height="355" rx="34" fill="url(#g3)"/>
+ <rect x="552" y="690" width="458" height="355" rx="34" fill="url(#g4)"/>
+</g>
+
+<!-- dairy illustration -->
+<g transform="translate(125 360)">
+ <rect x="0" y="0" width="150" height="205" rx="22" fill="#fff" opacity=".96"/>
+ <path d="M40 50h70l-8 115H48z" fill="#eaf4e5" stroke="#367d42" stroke-width="7"/>
+ <path d="M48 50l18-28h31l13 28" fill="#fff" stroke="#367d42" stroke-width="7"/>
+ <circle cx="74" cy="107" r="23" fill="#5ac64d"/>
+ <rect x="187" y="58" width="145" height="110" rx="55" fill="#fffaf0" stroke="#d3bc75" stroke-width="7"/>
+ <circle cx="227" cy="93" r="10" fill="#d3bc75"/><circle cx="275" cy="130" r="13" fill="#d3bc75"/>
+</g>
+<text x="100" y="621" class="sans dark" font-size="31" font-weight="800">SÜT &amp; PEYNİR</text>
+
+<!-- snacks -->
+<g transform="translate(615 365)">
+ <path d="M15 26h125l20 185H0z" fill="#b64736"/><path d="M20 70h120" stroke="#f7df9c" stroke-width="12"/><path d="M45 118c38-30 75-17 85 18c-37 24-73 18-85-18z" fill="#f7df9c"/>
+ <rect x="185" y="25" width="155" height="190" rx="28" fill="#fff" opacity=".95"/>
+ <circle cx="263" cy="105" r="52" fill="#d6a755"/><circle cx="245" cy="91" r="8" fill="#7c5b2b"/><circle cx="280" cy="122" r="9" fill="#7c5b2b"/><circle cx="286" cy="83" r="6" fill="#7c5b2b"/>
+</g>
+<text x="582" y="621" class="sans dark" font-size="31" font-weight="800">ATIŞTIRMALIK</text>
+
+<!-- cleaning -->
+<g transform="translate(125 735)">
+ <rect x="5" y="50" width="120" height="190" rx="26" fill="#fff" opacity=".96"/><path d="M42 55V12h50v43" fill="none" stroke="#367d42" stroke-width="8"/><rect x="23" y="110" width="84" height="72" rx="18" fill="#59b9ae"/>
+ <path d="M190 210c30-106 63-161 97-194c32 42 46 105 35 194z" fill="#fff" opacity=".96"/><path d="M226 142l60-43" stroke="#367d42" stroke-width="10" stroke-linecap="round"/><circle cx="302" cy="83" r="17" fill="#5ac64d"/>
+</g>
+<text x="100" y="1001" class="sans dark" font-size="31" font-weight="800">TEMİZLİK</text>
+
+<!-- housewares -->
+<g transform="translate(615 750)">
+ <path d="M20 55h190v138H20z" fill="#fff" opacity=".95"/><path d="M0 54h230" stroke="#575f59" stroke-width="12" stroke-linecap="round"/><path d="M43 24h145" stroke="#575f59" stroke-width="9" stroke-linecap="round"/><circle cx="70" cy="115" r="31" fill="#d2dfc5"/><rect x="126" y="90" width="55" height="70" rx="10" fill="#9fc2aa"/>
+ <path d="M270 35h70v160h-70z" fill="#fff" opacity=".95"/><path d="M280 75h50M280 110h50M280 145h50" stroke="#a6967d" stroke-width="8"/>
+</g>
+<text x="582" y="1001" class="sans dark" font-size="31" font-weight="800">EV İHTİYAÇLARI</text>
+
+<!-- CTA -->
+<rect x="70" y="1090" width="940" height="154" rx="40" fill="#172f20"/>
+<text x="110" y="1148" class="sans white" font-size="30">Bir sonraki tur hangi reyon olsun?</text>
+<text x="110" y="1200" class="sans" fill="#8fdc7f" font-size="29" font-weight="700">Yorumlara yaz ↓</text>
+<text x="70" y="1307" class="sans green" font-size="27" font-weight="700">@saatcioglusupermarket</text>
+</svg>
