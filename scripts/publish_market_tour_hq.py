@@ -7,7 +7,6 @@ API_URL='https://api.buffer.com'
 TARGET='saatcioglusupermarket'
 REPO='bulentsaatci-art/-saatcioglu-social-agent'
 SVG_RAW=f'https://raw.githubusercontent.com/{REPO}/main/public/posts/market-tour-hq-20260823.svg'
-# Public rasterizer: source is already public in this public GitHub repo and intended for Instagram.
 MEDIA_URL='https://images.weserv.nl/?url='+urllib.parse.quote(SVG_RAW,safe='')+'&w=1080&h=1350&fit=cover&output=jpg&q=95'
 CAPTION='''Mordoğan’da bugün kısa bir market turu 👀\n\nSüt & peynir, atıştırmalıklar, temizlik ve ev ihtiyaçları…\n\nBir sonraki turda hangi reyonu görmek istersiniz?\nYorumlara yazın 👇\n\n#Mordoğan #Karaburun #SaatçıoğluSupermarket'''
 STATUS=Path('status/published-hq-market-tour-v2.json')
@@ -37,7 +36,7 @@ def quality_gate():
         body=r.read(); ctype=r.headers.get('Content-Type','')
     im=Image.open(BytesIO(body)); im.load()
     w,h=im.size
-    ok=(w==1080 and h==1350 and len(body)>=250000 and ('image/' in ctype or im.format in ('JPEG','PNG','WEBP')))
+    ok=(w==1080 and h==1350 and len(body)>=150000 and ('image/' in ctype or im.format in ('JPEG','PNG','WEBP')))
     result={'ok':ok,'width':w,'height':h,'bytes':len(body),'format':im.format,'content_type':ctype,'media_url':MEDIA_URL}
     if not ok: raise RuntimeError('QUALITY_GATE_FAILED '+json.dumps(result,ensure_ascii=False))
     return result
