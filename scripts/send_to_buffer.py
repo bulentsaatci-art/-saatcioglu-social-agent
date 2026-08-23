@@ -14,10 +14,7 @@ def graphql(api_key: str, query: str):
     req = urllib.request.Request(
         API_URL,
         data=json.dumps({"query": query}).encode("utf-8"),
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {api_key}",
-        },
+        headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"},
         method="POST",
     )
     try:
@@ -50,16 +47,7 @@ def normalize(value):
 
 
 def get_target_channel(api_key: str):
-    data = graphql(
-        api_key,
-        """
-        query GetOrganizations {
-          account {
-            organizations { id name }
-          }
-        }
-        """,
-    )
+    data = graphql(api_key, "query GetOrganizations { account { organizations { id name } } }")
     organizations = data["account"]["organizations"]
     if not organizations:
         raise RuntimeError("Buffer organization bulunamadi")
@@ -71,52 +59,41 @@ def get_target_channel(api_key: str):
             api_key,
             f'''query GetChannels {{
               channels(input: {{ organizationId: {gql_string(org_id)} }}) {{
-                id
-                name
-                displayName
-                service
+                id name displayName service isQueuePaused
               }}
             }}''',
         )
         for channel in channels_data["channels"]:
-            seen.append({
-                "name": channel.get("name"),
-                "displayName": channel.get("displayName"),
-                "service": channel.get("service"),
-            })
+            seen.append({"name": channel.get("name"), "displayName": channel.get("displayName"), "service": channel.get("service")})
             names = {normalize(channel.get("name")), normalize(channel.get("displayName"))}
             if normalize(TARGET_CHANNEL_NAME) in names and normalize(channel.get("service")) == TARGET_SERVICE:
+                if channel.get("isQueuePaused"):
+                    raise RuntimeError("Buffer Instagram queue is paused")
                 print("Target channel found:", json.dumps(seen[-1], ensure_ascii=False))
                 return channel
 
-    raise RuntimeError(
-        "Buffer'da hedef Instagram kanali bulunamadi. Gorulen kanallar: "
-        + json.dumps(seen, ensure_ascii=False)
-    )
+    raise RuntimeError("Buffer'da hedef Instagram kanali bulunamadi. Gorulen kanallar: " + json.dumps(seen, ensure_ascii=False))
 
 
-def create_draft(api_key: str, channel_id: str, text: str, image_url: str | None = None, instagram_type: str = "post"):
-    assets_block = ""
-    if image_url:
-        assets_block = f'''\n        assets: [{{ image: {{ url: {gql_string(image_url)} }} }}]'''
+def create_post(api_key: str, channel_id: str, text: str, image_url: str, instagram_type: str, publish_now: bool):
+    if instagram_type not in {"post", "story", "reel"}:
+        raise RuntimeError("instagram_type post, story veya reel olmali")
 
-    metadata_block = ""
-    if TARGET_SERVICE == "instagram":
-        if instagram_type not in {"post", "story", "reel"}:
-            raise RuntimeError("instagram_type post, story veya reel olmali")
-        metadata_block = f'''\n        metadata: {{ instagram: {{ type: {instagram_type}, shouldShareToFeed: true }} }}'''
+    mode = "shareNow" if publish_now else "addToQueue"
+    draft_block = "" if publish_now else "\n        saveToDraft: true"
+    metadata_block = f'''\n        metadata: {{ instagram: {{ type: {instagram_type}, shouldShareToFeed: true }} }}'''
+    assets_block = f'''\n        assets: [{{ image: {{ url: {gql_string(image_url)} }} }}]'''
 
-    mutation = f'''mutation CreateApprovedDraft {{
+    mutation = f'''mutation CreateApprovedPost {{
       createPost(input: {{
         text: {gql_string(text)}
         channelId: {gql_string(channel_id)}
         schedulingType: automatic
-        mode: addToQueue
-        saveToDraft: true
+        mode: {mode}{draft_block}
         aiAssisted: true{assets_block}{metadata_block}
       }}) {{
         ... on PostActionSuccess {{
-          post {{ id text status dueAt }}
+          post {{ id text status dueAt sentAt externalLink sharedNow shareMode }}
         }}
         ... on MutationError {{ message }}
       }}
@@ -133,7 +110,6 @@ def main():
         raise RuntimeError("BUFFER_API_KEY GitHub Secret bulunamadi")
 
     print("BUFFER_API_KEY secret detected (value hidden)")
-
     path = Path(sys.argv[1])
     item = json.loads(path.read_text(encoding="utf-8"))
 
@@ -144,17 +120,15 @@ def main():
     if not text:
         raise RuntimeError("Paylasim metni bos")
 
-    if item.get("saveToDraft", True) is not True:
-        raise RuntimeError("V1 guvenlik kilidi: saveToDraft true olmak zorunda")
-
     image_url = str(item.get("image_url", "")).strip() or None
     if TARGET_SERVICE == "instagram" and not image_url:
-        raise RuntimeError("Instagram taslagi icin image_url veya video asset gerekli")
+        raise RuntimeError("Instagram gonderisi icin image_url gerekli")
 
     instagram_type = str(item.get("instagram_type", "post")).strip().lower() or "post"
+    publish_now = item.get("publishNow") is True
 
     channel = get_target_channel(api_key)
-    result = create_draft(api_key, channel["id"], text, image_url, instagram_type)
+    result = create_post(api_key, channel["id"], text, image_url, instagram_type, publish_now)
     print("Buffer result:", json.dumps(result, ensure_ascii=False, indent=2))
 
     if isinstance(result, dict) and result.get("message"):
