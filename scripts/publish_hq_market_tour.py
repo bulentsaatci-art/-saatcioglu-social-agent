@@ -3,7 +3,7 @@ from pathlib import Path
 from PIL import Image
 
 REPO='bulentsaatci-art/-saatcioglu-social-agent'
-PAYLOAD=Path('publish-trigger/hq-market-tour-20260823.b64')
+PART_DIR=Path('payload/hq-market-tour-20260823')
 MEDIA=Path('public/posts/market-tour-hq-20260823.jpg')
 STATUS=Path('status/published-hq-market-tour.json')
 RAW=f'https://raw.githubusercontent.com/{REPO}/main/{MEDIA.as_posix()}'
@@ -42,8 +42,11 @@ def wait_public():
 
 def main():
     key=os.environ['BUFFER_API_KEY']
+    parts=sorted(PART_DIR.glob('part*.b64'))
+    if not parts: raise RuntimeError('HQ payload parts missing')
+    encoded=''.join(p.read_text().strip() for p in parts)
     MEDIA.parent.mkdir(parents=True,exist_ok=True)
-    MEDIA.write_bytes(base64.b64decode(PAYLOAD.read_text().strip()))
+    MEDIA.write_bytes(base64.b64decode(encoded))
     with Image.open(MEDIA) as im:
         if im.size!=(1080,1350): raise RuntimeError(f'Quality gate failed dimensions={im.size}')
     if MEDIA.stat().st_size<300000: raise RuntimeError(f'Quality gate failed bytes={MEDIA.stat().st_size}')
