@@ -1,0 +1,29 @@
+name: Publish Kosedere festival post
+
+on:
+  push:
+    paths:
+      - 'publish-trigger/kosedere-2026.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Pillow
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install pillow
+
+      - name: Generate and publish community post
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+        run: python3 scripts/generate_publish_kosedere2026.py
