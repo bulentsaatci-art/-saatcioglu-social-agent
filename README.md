@@ -6,20 +6,19 @@ Saatcioglu Supermarket icin ayri ve izole sosyal medya otomasyon projesi.
 - PharmaPilot ve diger projelerden tamamen bagimsizdir.
 - Eve teslimat hizmeti yoktur.
 - Su anda web sitesi yoktur.
+- Meyve/sebze reyonu yoktur.
 - Fiyat, stok, kampanya, calisma saati veya urun bulunurlugu uydurulmaz.
-- Kullanici acikca onaylamadan Instagram'a yayin/schedule yapilmaz.
+- Alkol ve tutun urunleri sosyal medyada tanitilmaz, onerilmez veya bilerek one cikarilmaz.
 - Buffer API anahtari kodda tutulmaz; GitHub Actions Secret olarak `BUFFER_API_KEY` adiyla saklanir.
 
-## V1 akis
-ChatGPT Market Agent -> onay -> `approved/*.json` -> GitHub Actions -> Buffer -> Instagram
+## Otonom yonetim yetkisi
+Kullanici 23 Agustos 2026 itibariyla rutin sosyal medya yonetimini ajana devretmistir. Ajan dusuk riskli, dogrulanmis ve marka kurallarina uygun normal icerikleri tekrar tekrar onay istemeden hazirlayabilir, planlayabilir ve yayinlayabilir.
 
-Ilk testlerde guvenlik icin Buffer'a **draft** olusturulur. Akis dogrulandiktan sonra, yalnizca kullanicinin acik onayi sonrasinda kuyruga ekleme veya belirli saate planlama modu etkinlestirilebilir.
+Fiyat/indirim/stok/calisma saati/cekilis/odeme/sozlesme/ortaklik gibi yuksek riskli veya dogrulama gerektiren iddialar uydurulmaz. Dogrulanamayan bilgi yayinlanmaz.
 
-## Onay dosyasi ornegi
-```json
-{
-  "approved": true,
-  "text": "Paylasim metni",
-  "saveToDraft": true
-}
-```
+Eski feed temizliginde guncelligini yitirmis, yaniltici (ornegin eski web sitesi/eve teslimat/online siparis), mukerrer veya marka gorunumunu belirgin bozan icerikler temizleme adayi kabul edilir. Teknik olarak mumkun oldugunda arsiv silmeye tercih edilir.
+
+## Calisan akis
+ChatGPT Market Agent -> GitHub Actions -> Buffer -> @saatcioglusupermarket Instagram
+
+Bu akis test edilmis ve hem Reel hem de normal feed postu basariyla yayinlamistir.
