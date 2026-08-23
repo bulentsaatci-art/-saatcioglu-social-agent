@@ -1,0 +1,38 @@
+{
+  "published": false,
+  "reason": "No Canva URL passed 1080x1350 quality gate",
+  "checks": [
+    {
+      "url": "https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Fd493698e-32fa-4bd7-82d4-85112c1b83c9/watermark:F/width:160?csig=AAAAAAAAAAAAAAAAAAAAAAPp5zihkIoX2TRNxuLf4pm30xFzek-Xp4Zlm94SeoqO&exp=1787485542&osig=AAAAAAAAAAAAAAAAAAAAAHcNnrM8-wQ4vq_DicDCjNo2KpLeCh14xR6_rqvT_ORP&signer=media-rpc&x-canva-quality=thumbnail",
+      "check": {
+        "ok": false,
+        "width": 160,
+        "height": 200,
+        "bytes": 49469,
+        "content_type": "image/png"
+      }
+    },
+    {
+      "url": "https://media.canva.com/v2/image-resize/format:PNG/height:1350/quality:100/uri:ifs%3A%2F%2FM%2Fd493698e-32fa-4bd7-82d4-85112c1b83c9/watermark:F/width:1080?csig=AAAAAAAAAAAAAAAAAAAAAAPp5zihkIoX2TRNxuLf4pm30xFzek-Xp4Zlm94SeoqO&exp=1787485542&osig=AAAAAAAAAAAAAAAAAAAAAHcNnrM8-wQ4vq_DicDCjNo2KpLeCh14xR6_rqvT_ORP&signer=media-rpc&x-canva-quality=print",
+      "check": {
+        "ok": false,
+        "error": "<HTTPError 403: 'Forbidden'>"
+      }
+    },
+    {
+      "url": "https://media.canva.com/v2/image-resize/format:PNG/height:1350/quality:100/uri:ifs%3A%2F%2FM%2Fd493698e-32fa-4bd7-82d4-85112c1b83c9/watermark:F/width:1080?csig=AAAAAAAAAAAAAAAAAAAAAAPp5zihkIoX2TRNxuLf4pm30xFzek-Xp4Zlm94SeoqO&exp=1787485542&osig=AAAAAAAAAAAAAAAAAAAAAHcNnrM8-wQ4vq_DicDCjNo2KpLeCh14xR6_rqvT_ORP&signer=media-rpc&x-canva-quality=thumbnail",
+      "check": {
+        "ok": false,
+        "error": "<HTTPError 403: 'Forbidden'>"
+      }
+    },
+    {
+      "url": "https://media.canva.com/v2/image-resize/format:PNG/height:1350/quality:100/uri:ifs%3A%2F%2FM%2Fd493698e-32fa-4bd7-82d4-85112c1b83c9/watermark:F/width:1080",
+      "check": {
+        "ok": false,
+        "error": "<HTTPError 403: 'Forbidden'>"
+      }
+    }
+  ],
+  "timestamp": 1787469189.134144
+}
