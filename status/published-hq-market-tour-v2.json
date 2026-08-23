@@ -1,7 +1,31 @@
 {
-  "published": false,
-  "timestamp": 1787471831.8002298,
+  "published": true,
+  "timestamp": 1787472552.9026012,
   "source_svg": "https://raw.githubusercontent.com/bulentsaatci-art/-saatcioglu-social-agent/main/public/posts/market-tour-hq-20260823.svg",
   "media_url": "https://images.weserv.nl/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbulentsaatci-art%2F-saatcioglu-social-agent%2Fmain%2Fpublic%2Fposts%2Fmarket-tour-hq-20260823.svg&w=1080&h=1350&fit=cover&output=jpg&q=95",
-  "error": "RuntimeError('QUALITY_GATE_FAILED {\"ok\": false, \"width\": 1080, \"height\": 1350, \"bytes\": 202657, \"format\": \"JPEG\", \"content_type\": \"image/jpeg\", \"media_url\": \"https://images.weserv.nl/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbulentsaatci-art%2F-saatcioglu-social-agent%2Fmain%2Fpublic%2Fposts%2Fmarket-tour-hq-20260823.svg&w=1080&h=1350&fit=cover&output=jpg&q=95\"}')"
+  "quality_gate": {
+    "ok": true,
+    "width": 1080,
+    "height": 1350,
+    "bytes": 202657,
+    "format": "JPEG",
+    "content_type": "image/jpeg",
+    "media_url": "https://images.weserv.nl/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbulentsaatci-art%2F-saatcioglu-social-agent%2Fmain%2Fpublic%2Fposts%2Fmarket-tour-hq-20260823.svg&w=1080&h=1350&fit=cover&output=jpg&q=95"
+  },
+  "channel": {
+    "id": "6a8987d7ccaf649a67f5243c",
+    "name": "saatcioglusupermarket",
+    "displayName": "saatcioglusupermarket"
+  },
+  "buffer_result": {
+    "post": {
+      "id": "6a8aaaa9dc319146a2a10c8d",
+      "text": "Mordoğan’da bugün kısa bir market turu 👀\n\nSüt & peynir, atıştırmalıklar, temizlik ve ev ihtiyaçları…\n\nBir sonraki turda hangi reyonu görmek istersiniz?\nYorumlara yazın 👇\n\n#Mordoğan #Karaburun #SaatçıoğluSupermarket",
+      "status": "sent",
+      "sentAt": "2026-08-23T08:09:22.208Z",
+      "externalLink": "https://www.instagram.com/p/DcYBkqeloIB/",
+      "sharedNow": true,
+      "shareMode": "shareNow"
+    }
+  }
 }
