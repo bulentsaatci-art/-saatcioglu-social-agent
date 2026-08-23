@@ -3,7 +3,7 @@ name: Publish HQ market tour
 on:
   push:
     paths:
-      - 'publish-trigger/hq-market-tour-20260823.b64'
+      - 'publish-trigger/hq-market-tour-20260823.txt'
   workflow_dispatch:
 
 permissions:
@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: pip install pillow
 
-      - name: Decode, validate, publish and record result
+      - name: Assemble, validate, publish and record result
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
         run: python3 scripts/publish_hq_market_tour.py
