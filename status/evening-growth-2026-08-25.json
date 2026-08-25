@@ -1,0 +1,13 @@
+{
+  "date": "2026-08-25",
+  "decision": "no_additional_post",
+  "reason": "Fresh Buffer/Instagram feed audit completed at 2026-08-25T16:24:11Z. No posts from 2026-08-25 were present among the latest 50 sent/native posts, and the connected snapshot does not expose same-day reach/likes/comments metrics. Without a same-day post to support or verified performance signal, an extra Story/post would be forced rather than evidence-led.",
+  "published": false,
+  "audit": {
+    "feed_snapshot_refreshed": true,
+    "latest_visible_post_created_at": "2026-08-23T08:09:13.768Z",
+    "same_day_posts_found": 0,
+    "performance_metrics_available": false
+  },
+  "quality_gate": "No asset was published; mandatory quality gate therefore not invoked."
+}
