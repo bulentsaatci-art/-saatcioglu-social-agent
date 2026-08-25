@@ -1,5 +1,5 @@
-run_sha=55adad239000c188d182d8f6c07f59cccd8f32d2
+run_sha=28e312a4d773f247502c4e25aea036992c0a12dd
 exit_code=0
-timestamp_utc=2026-08-22T14:31:15Z
+timestamp_utc=2026-08-25T16:24:11Z
 --- output ---
 Fetched 50 sent/native posts
