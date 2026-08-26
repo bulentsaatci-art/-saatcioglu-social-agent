@@ -1,0 +1,14 @@
+{
+  "date": "2026-08-26",
+  "decision": "no_additional_post",
+  "reason": "No verified same-day performance signal is available. The latest confirmed feed audit remains 2026-08-25T16:24:11Z and the repository shows no new publishing action on 2026-08-26. A fresh audit trigger was created for 2026-08-26, but no workflow run was visible during this check. Without verified same-day reach/likes/comments or a same-day post to support, publishing an extra Story/post would be forced rather than evidence-led.",
+  "published": false,
+  "audit": {
+    "fresh_audit_trigger_created": true,
+    "fresh_audit_run_observed": false,
+    "latest_confirmed_audit_utc": "2026-08-25T16:24:11Z",
+    "same_day_pipeline_publish_found": false,
+    "performance_metrics_available": false
+  },
+  "quality_gate": "No asset was published; mandatory quality gate therefore not invoked."
+}
