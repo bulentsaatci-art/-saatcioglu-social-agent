@@ -1,0 +1,8 @@
+{
+  "date": "2026-08-29",
+  "decision": "no_additional_post",
+  "reason": "Same-day Instagram performance could not be verified because the feed snapshot is stale. The latest feed snapshot available in the repository is from 2026-08-23, and the latest feed-audit workflow run on 2026-08-26 failed at the commit-audit-result step after the Buffer/Instagram fetch itself succeeded. No supporting content was published because the quality/growth decision could not be grounded in current performance data.",
+  "published": false,
+  "technical_issue": "feed_audit_commit_step_failure",
+  "user_intervention_required": true
+}
