@@ -8,6 +8,38 @@
   "count": 50,
   "posts": [
     {
+      "id": "6a94e7205e9d605f7a829e91",
+      "text": "30 Ağustos, bağımsızlık mücadelemizin ve milletimizin kararlılığının simgesi. 🇹🇷\n\nBaşta Gazi Mustafa Kemal Atatürk olmak üzere, bu büyük zaferi bizlere armağan eden tüm kahramanlarımızı saygı, minnet ve rahmetle anıyoruz.\n\n30 Ağustos Zafer Bayramımız kutlu olsun. ❤️🇹🇷\n\nSaatçioğlu Süpermarket\n\n#30Ağustos #ZaferBayramı #30AğustosZaferBayramı #MustafaKemalAtatürk #SaatçioğluSüpermarket Mordoğan Karaburun",
+      "status": "sent",
+      "createdAt": "2026-08-30T05:16:10.000Z",
+      "dueAt": "2026-08-30T05:16:10.000Z",
+      "assets": [
+        {
+          "id": null,
+          "mimeType": "image/jpeg",
+          "source": "https://buffer-updates-media-backfill-bucket.s3.amazonaws.com/6a898263618f43695879c4b7/6a8987d7ccaf649a67f5243c/6a94e7205e9d605f7a829e91_thumbnail.jpg",
+          "thumbnail": "https://buffer-updates-media-backfill-bucket.s3.amazonaws.com/6a898263618f43695879c4b7/6a8987d7ccaf649a67f5243c/6a94e7205e9d605f7a829e91_thumbnail.jpg",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "id": "6a93d844701e2ee0a55a62b4",
+      "text": "",
+      "status": "sent",
+      "createdAt": "2026-08-30T05:14:39.000Z",
+      "dueAt": "2026-08-30T05:14:39.000Z",
+      "assets": [
+        {
+          "id": null,
+          "mimeType": "image/jpeg",
+          "source": "https://buffer-updates-media-backfill-bucket.s3.amazonaws.com/6a898263618f43695879c4b7/6a8987d7ccaf649a67f5243c/6a93d844701e2ee0a55a62b4_thumbnail.jpg",
+          "thumbnail": "https://buffer-updates-media-backfill-bucket.s3.amazonaws.com/6a898263618f43695879c4b7/6a8987d7ccaf649a67f5243c/6a93d844701e2ee0a55a62b4_thumbnail.jpg",
+          "type": "image"
+        }
+      ]
+    },
+    {
       "id": "6a8aaaa9dc319146a2a10c8d",
       "text": "Mordoğan’da bugün kısa bir market turu 👀\n\nSüt & peynir, atıştırmalıklar, temizlik ve ev ihtiyaçları…\n\nBir sonraki turda hangi reyonu görmek istersiniz?\nYorumlara yazın 👇\n\n#Mordoğan #Karaburun #SaatçıoğluSupermarket",
       "status": "sent",
@@ -774,42 +806,10 @@
           "type": "image"
         }
       ]
-    },
-    {
-      "id": "6a8987d9ff93d621060094d5",
-      "text": "19 Mayıs Atatürk’ü Anma Gençlik ve Spor Bayramımız Kutlu Olsun!\n#mordoğan #karaburun #atatürk #19mayıs",
-      "status": "sent",
-      "createdAt": "2022-05-18T20:04:58.000Z",
-      "dueAt": "2022-05-18T20:04:58.000Z",
-      "assets": [
-        {
-          "id": null,
-          "mimeType": "image/jpeg",
-          "source": "https://buffer-updates-media-backfill-bucket.s3.amazonaws.com/6a898263618f43695879c4b7/6a8987d7ccaf649a67f5243c/6a8987d9ff93d621060094d5_thumbnail.jpg",
-          "thumbnail": "https://buffer-updates-media-backfill-bucket.s3.amazonaws.com/6a898263618f43695879c4b7/6a8987d7ccaf649a67f5243c/6a8987d9ff93d621060094d5_thumbnail.jpg",
-          "type": "image"
-        }
-      ]
-    },
-    {
-      "id": "6a8987d9ff93d62106009501",
-      "text": "Ramazan Bayramınız Kutlu Olsun…\n#mordoğan #karaburun #urla #balçova #narlıdere #güzelbahçe #karabağlar #ramazan #şeker #bayram",
-      "status": "sent",
-      "createdAt": "2022-05-01T21:13:03.000Z",
-      "dueAt": "2022-05-01T21:13:03.000Z",
-      "assets": [
-        {
-          "id": null,
-          "mimeType": "image/jpeg",
-          "source": "https://buffer-updates-media-backfill-bucket.s3.amazonaws.com/6a898263618f43695879c4b7/6a8987d7ccaf649a67f5243c/6a8987d9ff93d62106009501_thumbnail.jpg",
-          "thumbnail": "https://buffer-updates-media-backfill-bucket.s3.amazonaws.com/6a898263618f43695879c4b7/6a8987d7ccaf649a67f5243c/6a8987d9ff93d62106009501_thumbnail.jpg",
-          "type": "image"
-        }
-      ]
     }
   ],
   "pageInfo": {
     "hasNextPage": true,
-    "endCursor": "WkRFMk5URTBNemsxT0RNd01EQT06YVRaaE9EazROMlE1Wm1ZNU0yUTJNakV3TmpBd09UVXdNUT09"
+    "endCursor": "WkRFMk5UWXhPRGsxTnpVd01EQT06YVRaaE9EazROMlE1Wm1ZNU0yUTJNakV3TmpBd09UUmxPUT09"
   }
 }
