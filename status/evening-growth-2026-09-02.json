@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-02",
+  "decision": "no_additional_post",
+  "published": false,
+  "same_day_performance_verified": false,
+  "reason": "Latest successful feed audit is from 2026-09-01 and the stored feed snapshot contains no 2026-09-02 post/performance data. No quality-gated new real-store asset was verified for a supporting Story/Reel, so no extra content was forced.",
+  "latest_feed_audit": {
+    "timestamp_utc": "2026-09-01T16:09:49Z",
+    "exit_code": 0,
+    "posts_fetched": 50
+  },
+  "quality_gate": "No publish attempted without verified 1080x1920 Story/Reel or full-resolution static asset.",
+  "scope": "Saatcioglu Supermarket Instagram only"
+}
